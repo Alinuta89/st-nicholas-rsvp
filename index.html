@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>St. Nicholas Party RSVP</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@700&display=swap">
+<style>
+:root{
+  --paper:#f3e6cc; --paper-2:#ead8b4; --ink:#1d1a17; --ink-soft:#4a4038;
+  --red:#a8231c; --red-deep:#7d1712; --gold:#d9a52b; --gold-soft:#f0cf7a; --cream:#fbf3e1; --ok:#2f6b3a;
+  --display:"Russo One","Arial Black",Impact,sans-serif;
+  --body:"PT Sans","Helvetica Neue",Arial,sans-serif;
+  --narrow:"PT Sans Narrow","Arial Narrow",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper)}
+body{color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45}
+[hidden]{display:none!important}
+.wrap{max-width:760px;margin:0 auto;padding:16px 16px 48px}
+h1,h2{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.mast{background:var(--red);color:var(--cream);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:18px;position:relative;overflow:hidden}
+.mast::after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;background:repeating-conic-gradient(var(--gold) 0 8deg,transparent 8deg 22deg);opacity:.22;border-radius:50%}
+.eyebrow{font-family:var(--narrow);text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--gold-soft)}
+.mast h1{font-size:clamp(30px,8vw,52px);line-height:1;margin-top:6px;position:relative;z-index:1}
+.mast h1 span{color:var(--gold)}
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-family:var(--narrow);font-size:17px;text-transform:uppercase;letter-spacing:.04em;position:relative;z-index:1}
+.facts b{color:var(--gold-soft)}
+.slip{background:var(--cream);border:3px solid var(--ink);margin-top:22px}
+.slip>header{background:var(--ink);color:var(--gold);display:flex;align-items:center;gap:10px;padding:8px 14px}
+.slip>header h2{font-size:18px;text-transform:uppercase}
+.star{width:18px;height:18px;flex:none;background:var(--red);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.body{padding:16px 14px;display:grid;gap:16px}
+.hint{color:var(--ink-soft);font-size:14px;margin:0}
+.f{display:grid;gap:5px;font-weight:700;min-width:0}
+.lbl{font-family:var(--narrow);text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:var(--ink-soft)}
+input[type=text],input[type=email],input[type=number],select,textarea{background:#fffaf0;border:2px solid var(--ink);padding:9px 10px;border-radius:0;width:100%;min-width:0}
+textarea{min-height:64px;resize:vertical}
+.row2{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg label{border:2px solid var(--ink);padding:8px 12px;cursor:pointer;background:#fffaf0;font-weight:700;user-select:none}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label.on{background:var(--red);color:var(--cream)}
+.list{display:grid;gap:10px}
+.item{display:grid;grid-template-columns:90px minmax(0,1fr) 44px;gap:8px;align-items:end;padding:10px;border:2px dashed var(--ink-soft);background:var(--paper)}
+.item.dish{grid-template-columns:120px minmax(0,1fr) 44px}
+@media (max-width:480px){.item.dish{grid-template-columns:minmax(0,1fr) 44px}.item.dish .f:nth-child(2){grid-column:1/2}}
+.x{border:2px solid var(--ink);background:var(--paper-2);height:42px;cursor:pointer;font-weight:700}
+.btn{border:3px solid var(--ink);background:var(--gold);padding:10px 16px;font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.red{background:var(--red);color:var(--cream)}
+.btn.ghost{background:transparent;box-shadow:none;border-width:2px;font-family:var(--body);font-weight:700;text-transform:none;padding:7px 12px}
+.btn[disabled]{opacity:.55;cursor:default}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.boot{display:flex;gap:12px;align-items:flex-start;background:var(--paper);border:2px solid var(--ink);padding:12px;cursor:pointer}
+.boot input{width:22px;height:22px;margin-top:2px;accent-color:var(--red);flex:none}
+.big{font-family:var(--display);font-size:30px;line-height:1.1;color:var(--red)}
+.notice{border:3px solid var(--red);background:#fff4ea;padding:12px 14px}
+.done{border:3px solid var(--ok);background:#eef6ea;padding:12px 14px;display:grid;gap:8px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px}
+.stat{border:2px solid var(--ink);background:var(--paper);padding:10px 12px}
+.stat .n{font-family:var(--display);font-size:28px;line-height:1;font-variant-numeric:tabular-nums}
+.stat .t{font-family:var(--narrow);text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--ink-soft);margin-top:4px}
+.stat.hot{background:var(--red);color:var(--cream)}.stat.hot .t{color:var(--gold-soft)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid rgba(29,26,23,.25);padding:8px 6px;text-align:left;vertical-align:top}
+th{font-family:var(--narrow);text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--ink-soft)}
+.num{text-align:right}
+.pill{display:inline-block;padding:2px 8px;border:2px solid var(--ink);font-size:12px;font-weight:700;text-transform:uppercase;white-space:nowrap}
+.pill.Yes{background:var(--ok);color:#fff}.pill.Maybe{background:var(--gold)}
+.you{background:#fff6d6}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:var(--ink);color:var(--gold-soft);padding:10px 16px;border:2px solid var(--gold);font-weight:700;z-index:9;max-width:calc(100% - 32px)}
+.foot{margin-top:28px;text-align:center;font-family:var(--display);color:var(--red)}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <div class="notice" id="setupNote" hidden style="margin-bottom:16px"><b>Almost ready.</b> Paste your Apps Script web app URL into <code>API_URL</code> near the bottom of index.html.</div>
+  <header class="mast">
+    <div class="eyebrow">Attention comrades · The St. Nicholas Central Committee</div>
+    <h1>St. Nicholas <span>Party</span></h1>
+    <div class="facts"><span><b>Sat</b> Dec 5</span><span><b>From</b> 4:00 PM</span><span><b>At</b> <span id="where">The Turners'</span></span></div>
+  </header>
+
+  <section class="slip">
+    <header><span class="star"></span><h2>Boot shopping list</h2></header>
+    <div class="body">
+      <div class="notice" style="background:var(--paper)">
+        <span class="lbl">Boot Fund families, bring</span>
+        <div class="big" id="giftCount">…</div>
+        <p class="hint" style="margin-top:4px">One <b>$5 gift for every kid</b> on the boot list, not just your own, so every boot gets something from every family. The number grows as families sign up, so check back before you shop.</p>
+      </div>
+      <div><span class="lbl">Who the boots are for</span><div class="scroll" id="bootGrid"><p class="hint">Loading…</p></div></div>
+    </div>
+  </section>
+
+  <form id="form" autocomplete="on" novalidate>
+    <section class="slip">
+      <header><span class="star"></span><h2 id="formTitle">Report for duty</h2></header>
+      <div class="body">
+        <p class="hint" id="formHint">No sign-in needed. After you send it, you'll get a personal link to change your RSVP anytime.</p>
+        <div id="doneBox" class="done" hidden>
+          <b>You're on the list. See you there, comrade!</b>
+          <span class="hint">Save this link to change your RSVP later. We also emailed it to you.</span>
+          <div class="actions"><input type="text" id="myLink" readonly><button type="button" class="btn ghost" id="copyLink">Copy link</button></div>
+        </div>
+        <div class="row2">
+          <label class="f"><span class="lbl">Family name</span><input type="text" id="family" placeholder="The Petrenko family"></label>
+          <label class="f"><span class="lbl">Email (for reminders)</span><input type="email" id="email" placeholder="you@example.com"></label>
+        </div>
+        <div class="f"><span class="lbl">Are you coming?</span>
+          <div class="seg" id="attSeg">
+            <label><input type="radio" name="att" value="Yes">We'll be there</label>
+            <label><input type="radio" name="att" value="Maybe">Maybe</label>
+            <label><input type="radio" name="att" value="No">Can't make it</label>
+          </div>
+        </div>
+        <label class="f coming" style="max-width:180px"><span class="lbl">Adults</span><input type="number" id="adults" min="0" max="20" value="2" inputmode="numeric"></label>
+      </div>
+    </section>
+
+    <section class="slip coming">
+      <header><span class="star"></span><h2>Young comrades</h2></header>
+      <div class="body">
+        <p class="hint">One row per kid, up to 6. Ages and boy/girl help everyone shop for the boots.</p>
+        <div class="list" id="kids"></div>
+        <div><button type="button" class="btn ghost" id="addKid">+ Add a kid</button></div>
+      </div>
+    </section>
+
+    <section class="slip coming">
+      <header><span class="star"></span><h2>Rations</h2></header>
+      <div class="body">
+        <p class="hint">Add as many dishes as you like (up to 4). See what's covered under Who's coming.</p>
+        <div class="list" id="dishes"></div>
+        <div><button type="button" class="btn ghost" id="addDish">+ Add a dish</button></div>
+      </div>
+    </section>
+
+    <section class="slip coming">
+      <header><span class="star"></span><h2>The Boot Solidarity Fund</h2></header>
+      <div class="body">
+        <label class="boot"><input type="checkbox" id="boot"><span><b>Yes, we're in.</b> Our kids get a boot, and we'll bring <b>one $5 gift for every kid on the boot list</b>, not just ours.</span></label>
+        <div id="bootTotal" hidden><span class="lbl">You'll need to bring</span><div class="big" id="bootAmt"></div><p class="hint" id="bootSub"></p></div>
+      </div>
+    </section>
+
+    <section class="slip">
+      <header><span class="star"></span><h2>Anything else</h2></header>
+      <div class="body">
+        <label class="f"><span class="lbl">Notes for Alina (optional)</span><textarea id="notes" placeholder="Arriving late, karaoke request, allergies to plan around…"></textarea></label>
+        <div class="actions"><button class="btn red" type="submit" id="save">Send RSVP</button></div>
+      </div>
+    </section>
+  </form>
+
+  <section class="slip">
+    <header><span class="star"></span><h2>Who's coming</h2></header>
+    <div class="body">
+      <div class="stats" id="whoStats"></div>
+      <div class="scroll" id="whoTable"></div>
+      <div id="whoFood"></div>
+    </div>
+  </section>
+
+  <section class="slip">
+    <header><span class="star"></span><h2>Lost your link?</h2></header>
+    <div class="body">
+      <p class="hint">Enter the email you RSVP'd with and we'll send your personal link again.</p>
+      <div class="actions"><input type="email" id="lostEmail" placeholder="you@example.com" style="flex:1;min-width:200px"><button type="button" class="btn ghost" id="lostBtn">Email my link</button></div>
+    </div>
+  </section>
+
+  <div class="foot">Workers of the world, party!</div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* ===== SETUP: paste your Apps Script web app URL (ends in /exec) between the quotes ===== */
+var API_URL = "";
+/* ======================================================================================= */
+(function(){
+var $=function(id){return document.getElementById(id)};
+var FEE=5, MAXK=6, MAXD=4, TYPES=["Appy","Main","Dessert","Drinks"];
+var list=[], myId=new URLSearchParams(location.search).get("id")||"";
+
+function call(method,payload,ok,fail){
+  if(!API_URL){$("setupNote").hidden=false;fail&&fail(new Error("Not set up yet"));return}
+  var req=method==="GET"
+    ? fetch(API_URL+"?action=data&id="+encodeURIComponent(payload||""))
+    : fetch(API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});
+  req.then(function(r){return r.json()}).then(function(d){if(d&&d.error)throw new Error(d.error);ok(d)}).catch(function(e){fail&&fail(e)});
+}
+if(!myId){try{myId=localStorage.getItem("snp-id")||""}catch(e){}}
+
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function toast(m){var t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true},3000)}
+function stat(n,t,hot){return '<div class="stat'+(hot?" hot":"")+'"><div class="n">'+n+'</div><div class="t">'+t+'</div></div>'}
+function plural(n,w){return n+" "+w+(n===1?"":"s")}
+
+/* ----- attendance segmented control ----- */
+function setAtt(v){document.querySelectorAll("#attSeg input").forEach(function(i){i.checked=i.value===v;i.parentNode.classList.toggle("on",i.checked)});sync()}
+function att(){var c=document.querySelector("#attSeg input:checked");return c?c.value:"Yes"}
+document.querySelectorAll("#attSeg input").forEach(function(i){i.addEventListener("change",function(){setAtt(i.value)})});
+
+/* ----- kids ----- */
+function addKid(k){
+  k=k||{};if($("kids").children.length>=MAXK)return;
+  var d=document.createElement("div");d.className="item";
+  d.innerHTML='<label class="f"><span class="lbl">Age</span><input type="number" min="0" max="17" inputmode="numeric" class="age" value="'+(k.age!=null?k.age:"")+'"></label>'+
+    '<div class="f"><span class="lbl">Boy or girl</span><div class="seg"><label><input type="radio" value="boy">Boy</label><label><input type="radio" value="girl">Girl</label></div></div>'+
+    '<button type="button" class="x" aria-label="Remove kid">✕</button>';
+  var name="g"+Math.random().toString(36).slice(2);
+  d.querySelectorAll(".seg input").forEach(function(i){i.name=name;i.checked=i.value===(k.gender||"boy");i.parentNode.classList.toggle("on",i.checked);
+    i.addEventListener("change",function(){d.querySelectorAll(".seg label").forEach(function(l){l.classList.toggle("on",l.firstChild.checked)})})});
+  d.querySelector(".x").onclick=function(){d.remove();sync()};
+  d.querySelector(".age").addEventListener("input",sync);
+  $("kids").appendChild(d);sync();
+}
+function readKids(){return Array.prototype.map.call($("kids").children,function(d){var a=d.querySelector(".age").value;return {age:a===""?null:Number(a),gender:d.querySelector(".seg input:checked").value}})}
+
+/* ----- dishes ----- */
+function addDish(x){
+  x=x||{};if($("dishes").children.length>=MAXD)return;
+  var d=document.createElement("div");d.className="item dish";
+  d.innerHTML='<label class="f"><span class="lbl">Type</span><select class="cat">'+TYPES.map(function(t){return '<option'+(t===(x.cat||"Appy")?" selected":"")+'>'+t+'</option>'}).join("")+'</select></label>'+
+    '<label class="f"><span class="lbl">What is it?</span><input type="text" class="what" value="'+esc(x.what||"")+'" placeholder="Pierogi, veggie tray, eggnog…"></label>'+
+    '<button type="button" class="x" aria-label="Remove dish">✕</button>';
+  d.querySelector(".x").onclick=function(){d.remove();sync()};
+  $("dishes").appendChild(d);sync();
+}
+function readDishes(){return Array.prototype.map.call($("dishes").children,function(d){return {cat:d.querySelector(".cat").value,what:d.querySelector(".what").value.trim()}}).filter(function(x){return x.what})}
+
+$("addKid").onclick=function(){addKid()};
+$("addDish").onclick=function(){addDish()};
+$("boot").addEventListener("change",sync);
+
+function bootKids(arr){return arr.filter(function(r){return r.coming!=="No"&&r.boot}).reduce(function(a,r){return a.concat(r.kids)},[])}
+
+function sync(){
+  var coming=att()!=="No";
+  document.querySelectorAll(".coming").forEach(function(el){el.hidden=!coming});
+  $("addKid").hidden=$("kids").children.length>=MAXK;
+  $("addDish").hidden=$("dishes").children.length>=MAXD;
+  var n=$("kids").children.length,on=$("boot").checked;
+  $("bootTotal").hidden=!on;
+  var others=bootKids(list.filter(function(r){return !r.mine})).length,total=others+(on?n:0);
+  $("bootAmt").textContent=plural(total,"gift")+" · about $"+(total*FEE);
+  $("bootSub").textContent=plural(n,"kid")+" of yours + "+others+" others on the list so far. The count grows as families join, so check back before you shop.";
+}
+
+function fill(r){
+  r=r||{};
+  $("family").value=r.family||"";$("email").value=r.email||"";
+  setAtt(r.coming||"Yes");$("adults").value=r.adults!=null?r.adults:2;
+  $("kids").innerHTML="";(r.kids||[]).forEach(addKid);
+  $("dishes").innerHTML="";var ds=r.dishes&&r.dishes.length?r.dishes:[{}];ds.forEach(addDish);
+  $("boot").checked=!!r.boot;$("notes").value=r.notes||"";sync();
+}
+
+/* ----- public views ----- */
+function ageGrid(kids){
+  if(!kids.length)return '<p class="hint">No boots signed up yet. Be the first family in!</p>';
+  var ages=[];kids.forEach(function(k){if(ages.indexOf(k.age)<0)ages.push(k.age)});ages.sort(function(a,b){return a-b});
+  var c=function(a,g){return kids.filter(function(k){return k.age===a&&k.gender===g}).length};
+  var b=kids.filter(function(k){return k.gender==="boy"}).length;
+  return '<table><thead><tr><th>Age</th><th class="num">Boys</th><th class="num">Girls</th><th class="num">Total</th></tr></thead><tbody>'+
+    ages.map(function(a){return '<tr><td>'+a+'</td><td class="num">'+(c(a,"boy")||"")+'</td><td class="num">'+(c(a,"girl")||"")+'</td><td class="num">'+(c(a,"boy")+c(a,"girl"))+'</td></tr>'}).join("")+
+    '<tr><th>All</th><th class="num">'+b+'</th><th class="num">'+(kids.length-b)+'</th><th class="num">'+kids.length+'</th></tr></tbody></table>';
+}
+function render(){
+  var bk=bootKids(list),N=bk.length;
+  $("giftCount").textContent=plural(N,"gift")+" · about $"+(N*FEE);
+  $("bootGrid").innerHTML=ageGrid(bk);
+  var going=list.filter(function(r){return r.coming!=="No"}),yes=list.filter(function(r){return r.coming==="Yes"});
+  var people=yes.reduce(function(a,r){return a+r.adults+r.kids.length},0);
+  $("whoStats").innerHTML=stat(people,"People confirmed",true)+stat(yes.length,"Families coming")+stat(list.filter(function(r){return r.coming==="Maybe"}).length,"Maybes");
+  going.sort(function(a,b){return (a.coming===b.coming?0:a.coming==="Yes"?-1:1)||a.family.localeCompare(b.family)});
+  $("whoTable").innerHTML=going.length?'<table><thead><tr><th>Family</th><th>Status</th><th>Kids</th><th>Bringing</th></tr></thead><tbody>'+
+    going.map(function(r){return '<tr'+(r.mine?' class="you"':'')+'><td><b>'+esc(r.family)+'</b>'+(r.mine?' <span class="hint">(you)</span>':'')+(r.boot?' <span class="hint">★ boot</span>':'')+'</td>'+
+      '<td><span class="pill '+r.coming+'">'+(r.coming==="Yes"?"Coming":"Maybe")+'</span></td>'+
+      '<td>'+(r.kids.length?r.kids.map(function(k){return (k.gender==="girl"?"G":"B")+k.age}).join(", "):'<span class="hint">—</span>')+'</td>'+
+      '<td>'+(r.dishes.length?r.dishes.map(function(d){return esc(d.cat)+": "+esc(d.what)}).join("<br>"):'<span class="hint">—</span>')+'</td></tr>'}).join("")+
+    '</tbody></table><p class="hint">Kids shown as B = boy, G = girl, with age.</p>':'<p class="hint">No RSVPs yet. Be the first!</p>';
+  var all=[];going.forEach(function(r){r.dishes.forEach(function(d){all.push({cat:d.cat,what:d.what,fam:r.family})})});
+  $("whoFood").innerHTML='<span class="lbl">Rations so far</span><div class="stats" style="margin-top:6px">'+TYPES.map(function(t){return stat(all.filter(function(d){return d.cat===t}).length,t)}).join("")+'</div>';
+  sync();
+}
+
+function load(first){
+  call("GET",myId,function(res){
+    list=res.list||[];
+    if(res.where)$("where").textContent=res.where;
+    if(first){
+      if(res.mine){fill(res.mine);showMine()}
+      else{if(myId){myId="";try{localStorage.removeItem("snp-id")}catch(e){}}fill(null)}
+    }
+    render();
+  },function(){if(API_URL)toast("Couldn't load the list. Refresh the page.")});
+}
+function showMine(){
+  $("formTitle").textContent="Your RSVP";
+  $("formHint").textContent="You're signed up. Change anything below, then tap Update RSVP.";
+  $("save").textContent="Update RSVP";
+}
+
+$("form").addEventListener("submit",function(e){
+  e.preventDefault();
+  var kids=readKids();
+  if(!$("family").value.trim()){toast("Add your family name");$("family").focus();return}
+  if(att()!=="No"&&kids.some(function(k){return k.age===null||k.age<0||k.age>17})){toast("Add an age (0–17) for each kid");return}
+  var rec={family:$("family").value,email:$("email").value,coming:att(),adults:$("adults").value,kids:kids,dishes:readDishes(),boot:$("boot").checked,notes:$("notes").value};
+  $("save").disabled=true;$("save").textContent="Sending…";
+  call("POST",{action:"save",rec:rec,id:myId},function(r){
+    var wasNew=!myId;myId=r.id;try{localStorage.setItem("snp-id",r.id)}catch(e){}
+    try{history.replaceState(null,"","?id="+r.id)}catch(e){}
+    showMine();$("save").disabled=false;
+    if(wasNew){$("myLink").value=location.origin+location.pathname+"?id="+r.id;$("doneBox").hidden=false;window.scrollTo(0,0)}
+    toast(wasNew?"RSVP received!":"RSVP updated");
+    load(false);
+  },function(err){
+    $("save").disabled=false;$("save").textContent=myId?"Update RSVP":"Send RSVP";
+    toast((err&&err.message)||"Couldn't save. Try again.");
+  });
+});
+
+$("copyLink").onclick=function(){
+  var i=$("myLink");i.select();
+  try{navigator.clipboard.writeText(i.value).then(function(){toast("Link copied")},function(){document.execCommand("copy");toast("Link copied")})}
+  catch(e){try{document.execCommand("copy");toast("Link copied")}catch(_){toast("Press and hold to copy")}}
+};
+$("lostBtn").onclick=function(){
+  var em=$("lostEmail").value.trim();if(!em){toast("Enter your email");return}
+  $("lostBtn").disabled=true;
+  call("POST",{action:"link",email:em},function(){$("lostBtn").disabled=false;toast("If that email is on the list, your link is on its way")},
+    function(){$("lostBtn").disabled=false;toast("Couldn't send. Try again.")});
+};
+
+fill(null);load(true);
+})();
+</script>
+</body>
+</html>
