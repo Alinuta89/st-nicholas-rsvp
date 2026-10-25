@@ -83,11 +83,12 @@ th{font-family:var(--narrow);text-transform:uppercase;letter-spacing:.08em;font-
 html.inv-on{overflow:hidden}
 html.inv-on .invite{display:flex}
 .invite.out{transform:translateY(-102%)}
+.inv-bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
 .inv-rays{position:absolute;left:50%;top:45%;width:260vmax;height:260vmax;margin:-130vmax 0 0 -130vmax;background:repeating-conic-gradient(var(--red-deep) 0 6deg,var(--red) 6deg 12deg);animation:inv-spin 160s linear infinite;pointer-events:none}
-.inv-band{position:absolute;left:-10%;right:-10%;bottom:6%;background:var(--ink);color:var(--gold);transform:rotate(-5deg);font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;padding:8px 0;overflow:hidden;pointer-events:none}
+.inv-band{position:absolute;left:-10%;right:-10%;bottom:2.5%;background:var(--ink);color:var(--gold);transform:rotate(-5deg);font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;padding:8px 0;overflow:hidden;pointer-events:none}
 .inv-band span{display:inline-block;animation:inv-marquee 60s linear infinite}
-.inv-inner{position:relative;z-index:1;margin:auto;width:100%;max-width:1060px;padding:28px 16px 56px;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:28px;align-items:center}
-.inv-art svg{display:block;width:100%;max-width:440px;height:auto;margin:0 auto;filter:drop-shadow(8px 8px 0 var(--ink));animation:inv-rise .9s cubic-bezier(.2,.8,.2,1) both}
+.inv-inner{position:relative;z-index:1;margin:auto;width:100%;max-width:1060px;padding:28px 16px 88px;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:28px;align-items:center}
+.inv-art svg{display:block;width:100%;max-width:440px;max-height:76vh;height:auto;margin:0 auto;filter:drop-shadow(8px 8px 0 var(--ink));animation:inv-rise .9s cubic-bezier(.2,.8,.2,1) both}
 .inv-head{line-height:.92;margin-top:8px;transform:rotate(-4deg);transform-origin:left center}
 .inv-head span{display:block;font-size:clamp(30px,6vw,54px);color:var(--gold-soft)}
 .inv-head .big{font-size:clamp(58px,12vw,128px);color:var(--cream);text-shadow:5px 5px 0 var(--ink);animation:inv-stamp .55s .35s cubic-bezier(.2,1.5,.4,1) both}
@@ -101,7 +102,7 @@ html.inv-on .invite{display:flex}
 @keyframes inv-rise{from{opacity:0;transform:translateY(40px)}}
 @keyframes inv-stamp{from{opacity:0;transform:scale(1.7)}}
 @media (max-width:760px){
-  .inv-inner{grid-template-columns:1fr;text-align:center;gap:6px;padding-top:18px}
+  .inv-inner{grid-template-columns:1fr;text-align:center;gap:6px;padding:18px 16px 40px}
   .inv-art svg{max-width:280px;max-height:38vh}
   .inv-head{transform-origin:center}
   .inv-sub{margin-left:auto;margin-right:auto}
@@ -116,8 +117,8 @@ html.inv-on .invite{display:flex}
 </head>
 <body>
 <section class="invite" id="invite" aria-label="Invitation">
-  <div class="inv-rays" aria-hidden="true"></div>
-  <div class="inv-band" aria-hidden="true"><span>★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots </span></div>
+  <div class="inv-bg" aria-hidden="true"><div class="inv-rays"></div>
+  <div class="inv-band"><span>★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots </span></div></div>
   <div class="inv-inner">
     <div class="inv-art"><svg viewBox="0 0 360 440" role="img" aria-label="St. Nicholas in a red-star mitre, raising his staff, beside a boot full of gifts">
 <circle cx="190" cy="175" r="142" fill="#d9a52b" stroke="#1d1a17" stroke-width="4"/>
