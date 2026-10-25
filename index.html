@@ -409,12 +409,14 @@ function render(){
   var people=yes.reduce(function(a,r){return a+r.adults+r.kids.length},0);
   $("whoStats").innerHTML=stat(people,"People confirmed",true)+stat(yes.length,"Families coming")+stat(list.filter(function(r){return r.coming==="Maybe"}).length,"Maybes");
   going.sort(function(a,b){return (a.coming===b.coming?0:a.coming==="Yes"?-1:1)||a.family.localeCompare(b.family)});
+  var nos=list.filter(function(r){return r.coming==="No"});
   $("whoTable").innerHTML=going.length?'<table><thead><tr><th>Family</th><th>Status</th><th>Kids</th><th>Bringing</th></tr></thead><tbody>'+
     going.map(function(r){return '<tr'+(r.mine?' class="you"':'')+'><td><b>'+esc(r.family)+'</b>'+(r.mine?' <span class="hint">(you)</span>':'')+(r.boot?' <span class="hint">★ boot</span>':'')+'</td>'+
       '<td><span class="pill '+r.coming+'">'+(r.coming==="Yes"?"Coming":"Maybe")+'</span></td>'+
       '<td>'+(r.kids.length?r.kids.map(function(k){return (k.gender==="girl"?"G":"B")+k.age}).join(", "):'<span class="hint">—</span>')+'</td>'+
       '<td>'+(r.dishes.length?r.dishes.map(function(d){return esc(d.cat)+": "+esc(d.what)}).join("<br>"):'<span class="hint">—</span>')+'</td></tr>'}).join("")+
-    '</tbody></table><p class="hint">Kids shown as B = boy, G = girl, with age.</p>':'<p class="hint">No RSVPs yet. Be the first!</p>';
+    '</tbody></table><p class="hint">Kids shown as B = boy, G = girl, with age.</p>':'<p class="hint">'+(nos.length?'Nobody confirmed yet.':'No RSVPs yet. Be the first!')+'</p>';
+  if(nos.length)$("whoTable").innerHTML+='<p class="hint">Can\'t make it: '+nos.map(function(r){return '<b>'+esc(r.family)+'</b>'+(r.mine?' (you)':'')}).join(", ")+'</p>';
   var all=[];going.forEach(function(r){r.dishes.forEach(function(d){all.push({cat:d.cat,what:d.what,fam:r.family})})});
   $("whoFood").innerHTML='<span class="lbl">Rations so far</span><div class="stats" style="margin-top:6px">'+TYPES.map(function(t){return stat(all.filter(function(d){return d.cat===t}).length,t)}).join("")+'</div>';
   sync();
