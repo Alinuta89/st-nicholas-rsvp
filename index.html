@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>St. Nicholas Party RSVP</title>
 <meta name="robots" content="noindex, nofollow">
+<script>try{if(!/[?&]id=/.test(location.search)&&!localStorage.getItem("snp-id")&&sessionStorage.getItem("snp-in")!=="1")document.documentElement.className+=" inv-on"}catch(e){document.documentElement.className+=" inv-on"}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Russo+One&family=PT+Sans:wght@400;700&family=PT+Sans+Narrow:wght@700&display=swap">
 <style>
 :root{
@@ -76,9 +77,88 @@ th{font-family:var(--narrow);text-transform:uppercase;letter-spacing:.08em;font-
 .you{background:#fff6d6}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:var(--ink);color:var(--gold-soft);padding:10px 16px;border:2px solid var(--gold);font-weight:700;z-index:9;max-width:calc(100% - 32px)}
 .foot{margin-top:28px;text-align:center;font-family:var(--display);color:var(--red)}
+.foot .btn{margin-top:10px;color:var(--ink)}
+/* ----- invitation cover ----- */
+.invite{display:none;position:fixed;inset:0;z-index:20;background:var(--red);color:var(--cream);overflow:hidden auto;transition:transform .75s cubic-bezier(.7,0,.25,1)}
+html.inv-on{overflow:hidden}
+html.inv-on .invite{display:flex}
+.invite.out{transform:translateY(-102%)}
+.inv-rays{position:absolute;left:50%;top:45%;width:260vmax;height:260vmax;margin:-130vmax 0 0 -130vmax;background:repeating-conic-gradient(var(--red-deep) 0 6deg,var(--red) 6deg 12deg);animation:inv-spin 160s linear infinite;pointer-events:none}
+.inv-band{position:absolute;left:-10%;right:-10%;bottom:6%;background:var(--ink);color:var(--gold);transform:rotate(-5deg);font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.12em;white-space:nowrap;padding:8px 0;overflow:hidden;pointer-events:none}
+.inv-band span{display:inline-block;animation:inv-marquee 60s linear infinite}
+.inv-inner{position:relative;z-index:1;margin:auto;width:100%;max-width:1060px;padding:28px 16px 56px;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:28px;align-items:center}
+.inv-art svg{display:block;width:100%;max-width:440px;height:auto;margin:0 auto;filter:drop-shadow(8px 8px 0 var(--ink));animation:inv-rise .9s cubic-bezier(.2,.8,.2,1) both}
+.inv-head{line-height:.92;margin-top:8px;transform:rotate(-4deg);transform-origin:left center}
+.inv-head span{display:block;font-size:clamp(30px,6vw,54px);color:var(--gold-soft)}
+.inv-head .big{font-size:clamp(58px,12vw,128px);color:var(--cream);text-shadow:5px 5px 0 var(--ink);animation:inv-stamp .55s .35s cubic-bezier(.2,1.5,.4,1) both}
+.inv-sub{font-size:18px;margin:24px 0 2px;max-width:32ch}
+.inv-title{font-family:var(--display);font-size:clamp(26px,4.6vw,42px);line-height:1.05;color:var(--gold);text-transform:uppercase}
+.invite .facts{margin-top:10px}
+.inv-go{font-size:24px;margin-top:24px;padding:14px 30px}
+.inv-fine{font-size:14px;color:var(--gold-soft);margin:14px 0 0}
+@keyframes inv-spin{to{transform:rotate(360deg)}}
+@keyframes inv-marquee{to{transform:translateX(-50%)}}
+@keyframes inv-rise{from{opacity:0;transform:translateY(40px)}}
+@keyframes inv-stamp{from{opacity:0;transform:scale(1.7)}}
+@media (max-width:760px){
+  .inv-inner{grid-template-columns:1fr;text-align:center;gap:6px;padding-top:18px}
+  .inv-art svg{max-width:280px;max-height:38vh}
+  .inv-head{transform-origin:center}
+  .inv-sub{margin-left:auto;margin-right:auto}
+  .invite .facts{justify-content:center}
+  .inv-band{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .invite{transition:none}
+  .inv-rays,.inv-band span,.inv-art svg,.inv-head .big{animation:none}
+}
 </style>
 </head>
 <body>
+<section class="invite" id="invite" aria-label="Invitation">
+  <div class="inv-rays" aria-hidden="true"></div>
+  <div class="inv-band" aria-hidden="true"><span>★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots ★ St. Nicholas Party ★ Dec 5 ★ Bring your boots </span></div>
+  <div class="inv-inner">
+    <div class="inv-art"><svg viewBox="0 0 360 440" role="img" aria-label="St. Nicholas in a red-star mitre, raising his staff, beside a boot full of gifts">
+<circle cx="190" cy="175" r="142" fill="#d9a52b" stroke="#1d1a17" stroke-width="4"/>
+<circle cx="190" cy="175" r="122" fill="none" stroke="#1d1a17" stroke-width="3" stroke-dasharray="3 9"/>
+<path d="M40 440C48 372 92 334 140 322H240C288 334 330 372 338 440Z" fill="#1d1a17"/>
+<path d="M246 342L282 238 326 250 300 352Z" fill="#1d1a17"/>
+<path d="M280 244L326 256 320 276 274 264Z" fill="#d9a52b" stroke="#1d1a17" stroke-width="3" stroke-linejoin="round"/>
+<g fill="none" stroke-linecap="round"><path d="M302 440L312 80" stroke="#1d1a17" stroke-width="14"/><path d="M302 440L312 80" stroke="#d9a52b" stroke-width="8"/></g>
+<path d="M118 330C150 346 230 346 262 330L258 352C228 366 152 366 122 352Z" fill="#fbf3e1" stroke="#1d1a17" stroke-width="3"/>
+<path d="M175 350H205L209 440H171Z" fill="#fbf3e1" stroke="#1d1a17" stroke-width="3"/>
+<path d="M186 372h8v8h8v8h-8v8h-8v-8h-8v-8h8zM186 408h8v8h8v8h-8v8h-8v-8h-8v-8h8z" fill="#a8231c"/>
+<ellipse cx="190" cy="210" rx="50" ry="58" fill="#eab38a" stroke="#1d1a17" stroke-width="3"/>
+<circle cx="168" cy="216" r="8" fill="#dd7a6a" opacity=".75"/><circle cx="212" cy="216" r="8" fill="#dd7a6a" opacity=".75"/>
+<g fill="none" stroke-linecap="round"><path d="M164 201Q172 193 180 201M200 201Q208 193 216 201" stroke="#1d1a17" stroke-width="3.5"/><path d="M158 188Q170 179 182 186M198 186Q210 179 222 188" stroke="#1d1a17" stroke-width="10"/><path d="M158 188Q170 179 182 186M198 186Q210 179 222 188" stroke="#fbf3e1" stroke-width="5"/></g>
+<path d="M140 186C128 208 130 236 144 252L152 196ZM240 186C252 208 250 236 236 252L228 196Z" fill="#fbf3e1" stroke="#1d1a17" stroke-width="3" stroke-linejoin="round"/>
+<path d="M136 224C134 284 160 332 190 354 220 332 246 284 244 224 226 246 206 252 190 252 174 252 154 246 136 224Z" fill="#fbf3e1" stroke="#1d1a17" stroke-width="3" stroke-linejoin="round"/>
+<path d="M164 270C168 294 176 314 186 332M216 270C212 294 204 314 194 332M190 262V300" fill="none" stroke="#d9c7a1" stroke-width="3" stroke-linecap="round"/>
+<path d="M158 238C170 224 186 226 190 236 194 226 210 224 222 238 210 250 198 248 190 242 182 248 170 250 158 238Z" fill="#fbf3e1" stroke="#1d1a17" stroke-width="3" stroke-linejoin="round"/>
+<ellipse cx="190" cy="222" rx="10" ry="8" fill="#e0956e" stroke="#1d1a17" stroke-width="2.5"/>
+<path d="M142 178V120C148 82 172 54 190 32 208 54 232 82 238 120V178Z" fill="#7d1712" stroke="#1d1a17" stroke-width="3" stroke-linejoin="round"/>
+<path d="M139 160H241V181H139Z" fill="#d9a52b" stroke="#1d1a17" stroke-width="3"/>
+<polygon points="190,88 195.6,104.2 212.8,104.6 199.1,115 204.1,131.4 190,121.6 175.9,131.4 180.9,115 167.2,104.6 184.4,104.2" fill="#d9a52b" stroke="#1d1a17" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="307" cy="234" r="17" fill="#eab38a" stroke="#1d1a17" stroke-width="3"/>
+<g fill="none" stroke-linecap="round"><path d="M312 82C309 40 360 34 357 72 355 96 330 98 331 78" stroke="#1d1a17" stroke-width="14"/><path d="M312 82C309 40 360 34 357 72 355 96 330 98 331 78" stroke="#d9a52b" stroke-width="8"/></g>
+<path d="M28 318H68V354H28Z" fill="#d9a52b" stroke="#1d1a17" stroke-width="3"/>
+<path d="M44 318H52V354H44Z" fill="#7d1712"/>
+<path d="M48 318C38 302 26 306 32 316ZM48 318C58 302 70 306 64 316Z" fill="#7d1712" stroke="#1d1a17" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M22 362H72V410L106 414C120 416 121 440 106 440H22Z" fill="#a8231c" stroke="#1d1a17" stroke-width="3" stroke-linejoin="round"/>
+<path d="M16 348H78V368H16Z" fill="#fbf3e1" stroke="#1d1a17" stroke-width="3"/>
+</svg></div>
+    <div class="inv-copy">
+      <div class="eyebrow">Attention, comrades! · Official summons</div>
+      <h2 class="inv-head"><span>You are</span><span class="big">invited!</span></h2>
+      <p class="inv-sub">By order of the St. Nicholas Central Committee, your whole family is summoned to the</p>
+      <div class="inv-title">St. Nicholas Party</div>
+      <div class="facts"><span><b>Sat</b> Dec 5</span><span><b>From</b> 4:00 PM</span><span><b>At</b> <span id="where2">The Turners'</span></span></div>
+      <button type="button" class="btn inv-go" id="enterBtn" aria-label="Enter and RSVP">Enter ★</button>
+      <p class="inv-fine">Boots, gifts, food and solidarity. Attendance is strongly encouraged.</p>
+    </div>
+  </div>
+</section>
 <div class="wrap" id="app">
   <div class="notice" id="setupNote" hidden style="margin-bottom:16px"><b>Almost ready.</b> Paste your Apps Script web app URL into <code>API_URL</code> near the bottom of index.html.</div>
   <header class="mast">
@@ -176,7 +256,7 @@ th{font-family:var(--narrow);text-transform:uppercase;letter-spacing:.08em;font-
     </div>
   </section>
 
-  <div class="foot">Workers of the world, party!</div>
+  <div class="foot">Workers of the world, party!<br><button type="button" class="btn ghost" id="seeInvite">See the invitation again</button></div>
 </div>
 <div class="toast" id="toast" hidden></div>
 
@@ -197,6 +277,20 @@ function call(method,payload,ok,fail){
   req.then(function(r){return r.json()}).then(function(d){if(d&&d.error)throw new Error(d.error);ok(d)}).catch(function(e){fail&&fail(e)});
 }
 if(!myId){try{myId=localStorage.getItem("snp-id")||""}catch(e){}}
+
+/* ----- invitation cover (first visit only; an RSVP link goes straight in) ----- */
+var root=document.documentElement,inv=$("invite"),app=$("app");
+function showInvite(){root.classList.add("inv-on");void inv.offsetWidth;inv.classList.remove("out");app.inert=true;setTimeout(function(){$("enterBtn").focus()},60)}
+function enterParty(){
+  app.inert=false;window.scrollTo(0,0);
+  try{sessionStorage.setItem("snp-in","1")}catch(e){}
+  var fin=function(){root.classList.remove("inv-on")};
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)return fin();
+  inv.classList.add("out");setTimeout(fin,800);
+}
+$("enterBtn").onclick=enterParty;
+$("seeInvite").onclick=showInvite;
+if(root.classList.contains("inv-on"))showInvite();
 
 function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
 function toast(m){var t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(function(){t.hidden=true},3000)}
@@ -295,7 +389,7 @@ function render(){
 function load(first){
   call("GET",myId,function(res){
     list=res.list||[];
-    if(res.where)$("where").textContent=res.where;
+    if(res.where){$("where").textContent=res.where;$("where2").textContent=res.where}
     if(first){
       if(res.mine){fill(res.mine);showMine()}
       else{if(myId){myId="";try{localStorage.removeItem("snp-id")}catch(e){}}fill(null)}
